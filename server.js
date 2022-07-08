@@ -10,7 +10,19 @@ var diagnosticScreener = require('./routes/diagnosticScreener');
 
 var app = express();
 app.use(cors());
-app.use(helmet());
+helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"], 
+      scriptSrc: ["'self'"],
+      styleSrc: ["'self'"],
+      imgSrc: ["*", 'data:'],
+      connectSrc: ["'self'"],
+      frameSrc: ["'self'"],
+    },
+  }
+})
+
 
 app.use(logger('dev'));
 app.use(express.json({limit: '50mb'}));
