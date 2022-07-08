@@ -1,0 +1,85 @@
+@use "../abstracts" as *;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 10px/16px = 62.5% --> 1rem = 10px
+
+  @media only screen and (max-width: $bp-xlarge) {
+    font-size: 60%;
+  }
+
+  @media only screen and (max-width: $bp-large) {
+    font-size: 57%;
+  }
+
+  @media only screen and (max-width: $mobile-medium) {
+    font-size: 45%;
+  }
+
+  @media only screen and (max-width: $mobile-small) {
+    font-size: 40%;
+  }
+
+  @media only screen and (max-width: $mobile-xsmall) {
+    font-size: 38%;
+  }
+
+  @media only screen and (max-width: $mobile-xsmall) {
+    font-size: 35%;
+  }
+}
+
+body {
+  font-family: $primary-font;
+  font-size: 300;
+  line-height: 1.6;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 27vw 1fr 27vw;
+  grid-template-rows: 3vh 1fr 4.5vh;
+  background-color: $lightGray;
+  width: 100vw;
+  height: 140rem;
+  grid-gap: .8rem;
+
+  @media only screen and (max-width: $bp-large) {
+    grid-template-columns: 24vw 1fr 24vw;
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    grid-template-columns: 18vw 1fr 18vw;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    grid-template-columns: 12vw 1fr 12vw;
+  }
+
+  @media only screen and (max-width: $bp-xsmall) {
+    grid-template-columns: 1vw 1fr 1vw;
+    grid-template-rows: .5vh 1fr 1.5vh;
+  }
+
+  @media only screen and (max-width: $bp-xsmall) {
+    grid-template-rows: .5vh 1fr 10rem;
+  }
+
+  @media only screen and (min-height: $height-md) {
+    height: 80rem;
+    grid-template-rows: .2vh 1fr .5vh;
+  }
+
+  @media only screen and (max-height: $height-large) {
+    height: 100vh;
+  }
+
+}

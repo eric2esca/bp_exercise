@@ -1,0 +1,91 @@
+@use "../abstracts" as *;
+
+.question {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  padding: 1rem;
+  background-color: $white;
+  border-radius: 2%;
+  box-shadow: -1rem 1rem 2rem #999;
+
+  display: grid;
+  grid-template-rows: 5vh repeat(3, min-content) 25vh 1fr;
+  
+  &__progressbar{
+    padding: 2rem 2rem 1rem 2rem;
+    align-self: end;
+  }
+
+  &__display_name{
+    justify-self: start;
+    margin-left: 4rem;
+    transform: translateY(-1rem);
+    font-size: 1.4rem;
+  }
+
+  &__prompt{
+    padding: 2rem 5rem 2rem 7rem;
+    justify-self: center;
+    align-self: end;
+    font-size: 1.75rem;
+  }
+
+  &__active_question{
+    padding: 0 5rem 3rem 7rem;
+    justify-self: center;
+    align-self: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+
+  &__response_container{
+    display: grid;
+    grid-template-rows: repeat(5, min-content) 1fr;
+    justify-content: center;
+    align-self: start;
+  }
+
+  &__answer_buttons{
+    background-color: $white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border: .19rem solid #949494;
+    border-color: #949494;
+    color: $black;
+    font-size: 2rem;
+    font-family: "Roboto";
+    line-height: 1.75;
+    height: 3.9rem;
+    border-radius: 0.5rem;
+    margin-top: .7rem;
+    // margin-left: 13vh;
+    letter-spacing: .02867em;
+
+    &:hover {
+      background-color: $lightGray;
+      box-shadow: 0rem .3rem .3rem #949494;
+    }
+
+    &:active {
+      background-color: darken($lightGray, 15%);
+      transform: translateY(.4rem);
+      box-shadow: 0rem .3rem .3rem darken(#949494, 15%);
+    }
+  }
+
+  &__bw{
+    width: 40rem;
+  }
+
+  &__results{
+    padding: 3rem;
+    margin-top: 4rem;
+  }
+}
+
+.MuiAlert-message{
+  font-size: 2rem;
+}
+
+// button.question__answer_buttons.question__bw{
+//   justify-items: center;
+// }
