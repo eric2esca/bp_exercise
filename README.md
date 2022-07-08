@@ -232,7 +232,7 @@ Substance_use || 	>= 1	 ||   ASSIST
 
 There was no styling guide so mostly followed the guide and slightly referenced the homepage for inspiration
 
-##How to deploy as prod
+## How to deploy as prod
 One way to do this is using AWS EC2. Here is a summary of some steps
 1. Launch an EC2 ubuntu server
 2. Configure PEM keys
