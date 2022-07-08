@@ -3,14 +3,14 @@
 ## First things first
 The site is hosted on an [AWS EC2 Server](http://ec2-54-159-132-145.compute-1.amazonaws.com/)
 
-##Architecture Setup
+## Architecture Setup
 * used `npx create-react-app` & modified some files & folders
 * used material-ui to supplement ui components
 * utilize sass & css grid to customize/ create components
 * Already had a test Postgres AWS RDS for testing personal projects. May be a bit powerful for a small project, but quick to connect.
 * Tech Stack - Postgres ExpressJS NodeJS ReactJS - (PERN)
 
-##Instructions to run locally
+## Instructions to run locally
 
 **Run the following Instructions:**
 * You must have NodeJs [Installed](https://nodejs.org/en/download/) and npm 
