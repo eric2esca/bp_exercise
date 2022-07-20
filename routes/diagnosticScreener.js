@@ -80,21 +80,20 @@ router.get('/', function(req, res, next) {
 });
 
 // FETCH DOMAIN MAPPING FROM DB - USED POSTGRES BECAUSE I ALREADY HAVE A TEST ONE FOR DEV PURPOSES
-router.post('/submit', function(req, res, next) {
+router.post('/submit', async (req, res, next) => {
   try {
     let depressionScores = 0;
     let maniaScores = 0;
     let anxietyScores = 0;
     let substanceScores = 0;
-    let resultsArray = [];
+    let resultsArray = new Set();
 
     //Postgres query to fetch domain mapping
     const query = `SELECT * FROM domainMapping`;
-    db.query(query, (err, results) => {
-      if(err) console.log(err);
+    const { rows } = await db.query(query); // For Brady & Jason who asked me why not async await
 
       //From postgres - domain mapping results
-      const domainMapping = results.rows; // Notice this mapping matches the instructions in the exercise 
+      const domainMapping = rows; // Notice this mapping matches the instructions in the exercise 
       
       //answers from frontend
       const clientAnswers = req.body;  // Recieved in the format requested by coding exercise
@@ -131,14 +130,14 @@ router.post('/submit', function(req, res, next) {
       });
 
       //Return results based on recommendation chart given in exercise
-      if(depressionScores >= 2) resultsArray.push("PHQ-9");
-      if(maniaScores >= 2) resultsArray.push("ASRM");
-      if(anxietyScores >= 2) resultsArray.push("PHQ-9");
-      if(substanceScores >= 1) resultsArray.push("ASSIST");
-
-      const uniqueResultsArray = [...new Set(resultsArray)]; // To avoid displaying PHQ-9 twice, or duplicates
-      res.status(200).json({ "results": uniqueResultsArray }); // Returned json in requested format from exercise
-    }); // { "results": [array] }
+      if(depressionScores >= 2) resultsArray.add("PHQ-9");
+      if(maniaScores >= 2) resultsArray.add("ASRM");
+      if(anxietyScores >= 2) resultsArray.add("PHQ-9");
+      if(substanceScores >= 1) resultsArray.add("ASSIST");
+      
+      // For Brady and Jason Question. To avoid duplicates. Returned new set to conform to requested format
+      res.status(200).json({ "results": [...new Set(resultsArray)] }); // Returned json in requested format from exercise
+    // { "results": [array] }
   } catch (err) {
     res.status(500).json({ err });
   }
